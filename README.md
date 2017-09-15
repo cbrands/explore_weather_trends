@@ -155,7 +155,7 @@ The second plot show the temperature difference between Amsterdam and the rest o
 * The signal of Amsterdam is noicier than the global line. This is no surprice as the Amsterdam is just one place and the global line is the average of the whole world.
 * The temperature in Amsterdam is consitently higher than the global temperature. 
 * The difference between the the temperature in Amsterdam and the global temperatures is decreasing (Figure 2)
-* The global temperature have been ricing from early 20th century.
+* The global temperature have been rising from early 20th century.
 * After a small plateau in the seventies the global temperature has been increasing at an even higher rate. 
-* The temperature in Amsterdam follow the global trends and is ricing also.
-* The last 20 years the difference between Amsterdam and global temperatures ranged from 0.64 to 1.11 with an average of 0.87. 
+* The temperature in Amsterdam follow the global trends and is rising also.
+* The last 20 years the difference between Amsterdam and global temperatures ranged from 0.64 to 1.11 with an average of 0.87. That is to big an error to reliably get the temperature in Amsterdam from the global temperature.
