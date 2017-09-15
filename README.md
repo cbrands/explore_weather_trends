@@ -21,7 +21,7 @@ SELECT * FROM city_data LIMIT 1;
 ```
 Result:
 
-| year | city | country | avg_temp |
+| year | city | country | avg\_temp |
 | ---- | ---- | ------- | -------- |
 | 1849 | Abidjan | Côte D'Ivoire | 25.58 |
 
@@ -31,7 +31,7 @@ SELECT * FROM global_data LIMIT 1;
 ```
 Result:
 
-| year | avg_temp |
+| year | avg\_temp |
 | ---- | -------- |
 | 1750 | 8.72 |
 
@@ -58,7 +58,7 @@ SELECT * FROM global_data ORDER BY year LIMIT 1;
 ```
 Result:
 
-| year | avg_temp |
+| year | avg\_temp |
 | ---- | -------- |
 | 1750 | 8.72 |
 
@@ -70,16 +70,60 @@ SELECT * FROM city_data WHERE city = 'Amsterdam' ORDER BY year LIMIT 1;
 ```
 Result:
 
-| year | city | country | avg_temp |
+| year | city | country | avg\_temp |
 | ---- | ---- | ------- | -------- |
 | 1743 | Amsterdam | Netherlands |7.43 |
 
 The results above mean that I can compare Amsterdam with global data from the year 1750.
 
-### export to sheets
+### Using an inner join statement
+The data that is needed to compare the temperature in Amsterdam with the global temperature is in two tables. Therefore an inner join is needed. In order to reduce the waiting time as wel as unnecessary load on the servers I use a LIMIT of 3 while developing the query. From city\_data we want the year and the average temperature (avg\_temp) for Amsterdam and only for 1750 and after. This data must be sorted by year. 
+```
+SELECT year, avg_temp FROM city_data WHERE city = 'Amsterdam' AND year >= 1750 ORDER BY year LIMIT 3;
+```
+Result
+
+| year | avg\_temp |
+| ---- | -------- |
+| 1750 | 10.04 |
+| 1751 | 9.63 |
+| 1752 | 5.97 |
+
+Great. Before adding the inner join it is important to realize that both the city\_data as the global\_data table have year and avg\_temp colums and SQL commands need to be unambiguous. So the column names need to be preceded by the table name.
+Command:
+```
+SELECT city_data.year, city_data.avg_temp FROM city_data WHERE city = 'Amsterdam' AND city_data.year >= 1750 ORDER BY year LIMIT 3;
+```
+The result is the same as the query above.
+Now we are ready to make the inner join.
+```
+SELECT city_data.year, city_data.avg_temp, global_data.avg_temp FROM city_data INNER JOIN global_data ON city_data.year=global_data.year WHERE city = 'Amsterdam' AND city_data.year >= 1750 ORDER BY year LIMIT 3;
+```
+Result:
+
+| year | avg\_temp |
+| ---- | --------- |
+| 1750 | 8.72 |
+| 1751 | 7.98 |
+| 1752 | 5.78 |
+
+Getting there. To seperate the avg\_temp data from city\_data and global\_data both columns will be renamed with the keyword AS. Also the "LIMIT 3" can now be removed. 
+Command:
+```
+SELECT city_data.year, 
+city_data.avg_temp AS amsterdam_avg_temp, global_data.avg_temp AS global_avg_temp
+FROM city_data 
+INNER JOIN global_data 
+ON city_data.year=global_data.year
+WHERE city = 'Amsterdam' AND city_data.year >= 1750 
+ORDER BY year; 
+```
+The result is exported in a csv file named raw\_data.csv, which is included in the project.
+
 
 ## Step 3. Visualize the data
-### moving average
+### Moving average.
+
 ### plot
 
 ## Observations.
