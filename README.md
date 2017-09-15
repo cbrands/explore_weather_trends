@@ -10,6 +10,7 @@ Command:
 SELECT * FROM city_list LIMIT 1;
 ```
 Result:
+
 | city	| country |
 | ----- | ------- |
 | Abidjan | Côte D'Ivoire |
@@ -19,6 +20,7 @@ Command:
 SELECT * FROM city_data LIMIT 1;
 ```
 Result:
+
 | year | city | country | avg_temp |
 | ---- | ---- | ------- | -------- |
 | 1849 | Abidjan | Côte D'Ivoire | 25.58 |
@@ -28,6 +30,7 @@ Command:
 SELECT * FROM global_data LIMIT 1;
 ```
 Result:
+
 | year | avg_temp |
 | ---- | -------- |
 | 1750 | 8.72 |
