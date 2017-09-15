@@ -123,7 +123,10 @@ The result is exported in a csv file named raw\_data.csv, which is included in t
 
 ## Step 3. Visualize the data
 ### Moving average.
+The raw\_data.csv file has been imported into a google sheet. The link is [sheet](https://drive.google.com/open?id=1sWEY-dkOH_B9Q59gh3n-2pZyMdcVBpm4uMpnjp7IVj4).
+I also exported the file to excel. This excel file is included in the project.
+The year is in column A, the temperature of Amsterdam is in column B, and the global temperature is in column C. In columns D and E I calculated the moving averages of columns B and C respectively. Simply by inserting the formula =AVERAGE( B2:B11) into field D11 and then copy downard. In column F I substracted column E from column D to get the temperature difference of Amsterdam - Global.
 
-### plot
+### Plot.
 
 ## Observations.
