@@ -36,7 +36,46 @@ Result:
 | 1750 | 8.72 |
 
 ## Step 2. Retrieving the data.
-### sql
+### Selecting a city.
+Now it is time to select a city from the Netherlands. First I wanted to know which cities from the Netherlands were available in the database.
+Command:
+```
+SELECT * FROM city_list WHERE country = 'Netherlands'; 
+```
+Result:
+
+| city | country |
+| ---- | ------- |
+| Amsterdam | Netherlands |
+
+Hmm for obvious reasons I choose Amsterdam.
+
+### Getting the starting point.
+To find out the first year from which global data is available I used the following command. 
+
+```
+SELECT * FROM global_data ORDER BY year LIMIT 1; 
+```
+Result:
+
+| year | avg_temp |
+| ---- | -------- |
+| 1750 | 8.72 |
+
+This is the same result as I got from investigating the global_data schema above, so apparently the data was already ordered by year.
+
+Now for Amsterdam
+```
+SELECT * FROM city_data WHERE city = 'Amsterdam' ORDER BY year LIMIT 1; 
+```
+Result:
+
+| year | city | country | avg_temp |
+| ---- | ---- | ------- | -------- |
+| 1743 | Amsterdam | Netherlands |7.43 |
+
+The results above mean that I can compare Amsterdam with global data from the year 1750.
+
 ### export to sheets
 
 ## Step 3. Visualize the data
