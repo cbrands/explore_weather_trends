@@ -1,7 +1,7 @@
 # Explore weather trends.
 
 ## Introduction.
-This project is my implementation of the _"Explore weather trends"_ project which is project 0 in the Udacity DataAnalyst Nanodegree program. As I live in the Netherlands I will compare the global temperature data with that of a city in the Netherlands. 
+This project is my implementation of the _"Explore weather trends"_ project which is project 0 in the Udacity DataAnalyst Nanodegree program. Here is a [link](https://www.udacity.com/course/data-analyst-nanodegree--nd002) to the program. As I live in the Netherlands I will compare the global temperature data with that of a city in the Netherlands. 
 
 ## Step 1. Understanding the schema.
 Before retrieving the data it is important to understand the schema of the database. It was given that the database consisted of three tables city\_list, city\_data, and global\_data. The scema was explored in the following manner.
