@@ -4,7 +4,7 @@
 This project is my implementation of the _"Explore weather trends"_ project which is project 0 in the Udacity DataAnalyst Nanodegree program. Here is a [link](https://www.udacity.com/course/data-analyst-nanodegree--nd002) to the program. As I live in the Netherlands I will compare the global temperature data with that of a city in the Netherlands. 
 
 ## Step 1. Understanding the schema.
-Before retrieving the data it is important to understand the schema of the database. It was given that the database consisted of three tables city\_list, city\_data, and global\_data. The scema was explored in the following manner.
+Before retrieving the data it is important to understand the schema of the database. It was given that the database consisted of three tables city\_list, city\_data, and global\_data. The schema was explored in the following manner.
 Command:
 ```
 SELECT * FROM city_list LIMIT 1;
@@ -66,7 +66,9 @@ This is the same result as I got from investigating the global_data schema above
 
 Now for Amsterdam
 ```
-SELECT * FROM city_data WHERE city = 'Amsterdam' ORDER BY year LIMIT 1; 
+SELECT * FROM city_data 
+WHERE city = 'Amsterdam' 
+ORDER BY year LIMIT 1; 
 ```
 Result:
 
@@ -79,7 +81,11 @@ The results above mean that I can compare Amsterdam with global data from the ye
 ### Using an inner join statement
 The data that is needed to compare the temperature in Amsterdam with the global temperature is in two tables. Therefore an inner join is needed. In order to reduce the waiting time as wel as unnecessary load on the servers I use a LIMIT of 3 while developing the query. From city\_data we want the year and the average temperature (avg\_temp) for Amsterdam and only for 1750 and after. This data must be sorted by year. 
 ```
-SELECT year, avg_temp FROM city_data WHERE city = 'Amsterdam' AND year >= 1750 ORDER BY year LIMIT 3;
+SELECT year, avg_temp 
+FROM city_data 
+WHERE city = 'Amsterdam' AND year >= 1750 
+ORDER BY year 
+LIMIT 3;
 ```
 Result
 
@@ -92,12 +98,20 @@ Result
 Great. Before adding the inner join it is important to realize that both the city\_data as the global\_data table have year and avg\_temp colums and SQL commands need to be unambiguous. So the column names need to be preceded by the table name.
 Command:
 ```
-SELECT city_data.year, city_data.avg_temp FROM city_data WHERE city = 'Amsterdam' AND city_data.year >= 1750 ORDER BY year LIMIT 3;
+SELECT city_data.year, city_data.avg_temp 
+FROM city_data 
+WHERE city = 'Amsterdam' AND city_data.year >= 1750 
+ORDER BY year 
+LIMIT 3;
 ```
 The result is the same as the query above.
 Now we are ready to make the inner join.
 ```
-SELECT city_data.year, city_data.avg_temp, global_data.avg_temp FROM city_data INNER JOIN global_data ON city_data.year=global_data.year WHERE city = 'Amsterdam' AND city_data.year >= 1750 ORDER BY year LIMIT 3;
+SELECT city_data.year, city_data.avg_temp, global_data.avg_temp 
+FROM city_data 
+INNER JOIN global_data ON city_data.year=global_data.year 
+WHERE city = 'Amsterdam' AND city_data.year >= 1750 
+ORDER BY year LIMIT 3;
 ```
 Result:
 
@@ -111,10 +125,10 @@ Getting there. To seperate the avg\_temp data from city\_data and global\_data b
 Command:
 ```
 SELECT city_data.year, 
-city_data.avg_temp AS amsterdam_avg_temp, global_data.avg_temp AS global_avg_temp
+city_data.avg_temp AS amsterdam_avg_temp, 
+global_data.avg_temp AS global_avg_temp
 FROM city_data 
-INNER JOIN global_data 
-ON city_data.year=global_data.year
+INNER JOIN global_data ON city_data.year=global_data.year
 WHERE city = 'Amsterdam' AND city_data.year >= 1750 
 ORDER BY year; 
 ```
