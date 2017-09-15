@@ -144,3 +144,4 @@ The second plot show the temperature difference between Amsterdam and the rest o
 * The global temperature have been ricing from early 20th century.
 * After a small plateau in the seventies the global temperature has been increasing at an even higher rate. 
 * The temperature in Amsterdam follow the global trends and is ricing also.
+* The last 20 years the difference between Amsterdam and global temperatures ranged from 0.64 to 1.11 with an average of 0.87. 
